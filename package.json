@@ -1,0 +1,49 @@
+{
+  "name": "malgn-studio-mng",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint .",
+    "db:generate": "drizzle-kit generate",
+    "db:apply": "wrangler d1 migrations apply malgn-studio-project --remote",
+    "db:seed": "wrangler d1 execute malgn-studio-project --remote --file=server/db/seed.sql",
+    "content:seed:gen": "node scripts/gen-content-seed.mjs"
+  },
+  "dependencies": {
+    "@iconify-json/heroicons": "^1.2.0",
+    "@iconify-json/lucide": "^1.2.0",
+    "@nuxt/content": "^3.0.0",
+    "@nuxt/ui": "^3.0.0",
+    "@pinia/nuxt": "^0.5.5",
+    "better-sqlite3": "^12.5.0",
+    "drizzle-orm": "0.45.2",
+    "nuxt": "^3.16.0",
+    "pinia": "^2.2.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^0.7.0",
+    "@types/node": "^24.13.1",
+    "drizzle-kit": "0.31.10",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.0",
+    "vue-tsc": "^2.1.0"
+  },
+  "packageManager": "pnpm@10.25.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "better-sqlite3",
+      "esbuild",
+      "unrs-resolver",
+      "vue-demi"
+    ]
+  }
+}

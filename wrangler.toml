@@ -1,0 +1,16 @@
+name = "malgn-studio-mng"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+# 현황판 데이터 DB (Cloudflare D1)
+[[d1_databases]]
+binding = "DB"
+database_name = "malgn-studio-project"
+database_id = "PLACEHOLDER_RUN_WRANGLER_D1_CREATE"
+migrations_dir = "server/db/migrations"
+
+# 이슈 첨부 이미지 저장소 (Cloudflare R2). 업로드/서빙은 /api/uploads 경유(로그인 게이트).
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "malgn-studio-mng-files"
