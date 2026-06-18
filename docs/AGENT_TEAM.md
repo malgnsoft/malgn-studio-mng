@@ -5,23 +5,28 @@
 `Agent` 툴의 `subagent_type` 또는 description 자동 매칭으로 스폰됩니다.
 
 > 서비스 기획 정본은 [planning/](./planning/), 큰 그림은 [planning/00-OVERVIEW.md](./planning/00-OVERVIEW.md) 참조.
+> **각 에이전트의 누적 메모리·룰·스킬(성장 기록)**은 [agents/](./agents/)에 있다(성장 시스템: [agents/README.md](./agents/README.md)).
 
 ---
 
-## 팀 구성 (9)
+## 팀 구성 (11)
 
-| 에이전트 | 역할 | 담당 레포 | 정의 |
-| --- | --- | --- | --- |
-| **planner** | 기획자 — 도메인 기획·정책·플로우 정본화 | `malgn-studio-mng/docs` | [planner.md](../.claude/agents/planner.md) |
-| **api-developer** | 백엔드 + **AI 생성 파이프라인**(인제스트·RAG·LLM 오케스트레이션·외부 미디어 API) | `malgn-studio-api` | [api-developer.md](../.claude/agents/api-developer.md) |
-| **frontend-developer** | 사용자단 스튜디오 앱(소스·생성·출처·검수·발행) + 마크업·디자인 시스템 | `malgn-studio` | [frontend-developer.md](../.claude/agents/frontend-developer.md) |
-| **admin-developer** | 운영자 콘솔(회원·콘텐츠·권한·과금·스킬 택소노미) + RBAC | `malgn-studio-admin` | [admin-developer.md](../.claude/agents/admin-developer.md) |
-| **lms-developer** | LMS(코스·수강·진도·평가·xAPI/LRS) + 발행 콘텐츠 수신 | `malgn-studio-lms` | [lms-developer.md](../.claude/agents/lms-developer.md) |
-| **dba** | DBA — 스키마·마이그레이션·인덱스·벡터 정합 | 스튜디오 데이터 저장소 | [dba.md](../.claude/agents/dba.md) |
-| **qa** | QA — 검증·테스트·회귀·생성품질/출처 정합·결함 보고 | 전 레포 | [qa.md](../.claude/agents/qa.md) |
-| **security-reviewer** | 보안·개인정보 — 키·PII·업로드 격리·프롬프트 인젝션·테넌트 격리 렌즈 | 전 레포 | [security-reviewer.md](../.claude/agents/security-reviewer.md) |
-| **deployer** | 배포/DevOps — 빌드·배포·검증·env/시크릿 | 전 레포 | [deployer.md](../.claude/agents/deployer.md) |
+| 에이전트 | 역할 | 담당 레포 | 정의 | 성장기록 |
+| --- | --- | --- | --- | --- |
+| **planner** | 기획자 — 도메인 기획·정책·플로우 정본화 | `malgn-studio-mng/docs` | [def](../.claude/agents/planner.md) | [rec](./agents/planner.md) |
+| **instructional-designer** | 교수설계(ID) — 학습목표·블룸·평가정렬·품질 루브릭·검수 기준 | `malgn-studio-mng/docs` | [def](../.claude/agents/instructional-designer.md) | [rec](./agents/instructional-designer.md) |
+| **api-developer** | 백엔드 + **AI 생성 파이프라인**(인제스트·RAG·LLM 오케스트레이션·외부 미디어 API) | `malgn-studio-api` | [def](../.claude/agents/api-developer.md) | [rec](./agents/api-developer.md) |
+| **frontend-developer** | 사용자단 스튜디오 앱(소스·생성·출처·검수·발행) + 마크업·디자인 시스템 | `malgn-studio` | [def](../.claude/agents/frontend-developer.md) | [rec](./agents/frontend-developer.md) |
+| **admin-developer** | 운영자 콘솔(회원·콘텐츠·권한·과금·스킬 택소노미) + RBAC | `malgn-studio-admin` | [def](../.claude/agents/admin-developer.md) | [rec](./agents/admin-developer.md) |
+| **lms-developer** | LMS(코스·수강·진도·평가·xAPI/LRS) + 발행 콘텐츠 수신 | `malgn-studio-lms` | [def](../.claude/agents/lms-developer.md) | [rec](./agents/lms-developer.md) |
+| **dba** | DBA — 스키마·마이그레이션·인덱스·벡터 정합 | 스튜디오 데이터 저장소 | [def](../.claude/agents/dba.md) | [rec](./agents/dba.md) |
+| **qa** | QA — 검증·테스트·회귀·생성품질/출처 정합·결함 보고 | 전 레포 | [def](../.claude/agents/qa.md) | [rec](./agents/qa.md) |
+| **security-reviewer** | 보안·개인정보 — 키·PII·업로드 격리·프롬프트 인젝션·테넌트 격리 렌즈 | 전 레포 | [def](../.claude/agents/security-reviewer.md) | [rec](./agents/security-reviewer.md) |
+| **deployer** | 배포/DevOps — 빌드·배포·검증·env/시크릿 | 전 레포 | [def](../.claude/agents/deployer.md) | [rec](./agents/deployer.md) |
+| **growth-keeper** | 팀 성장 기록 큐레이션 — 회고 수집·메모리/룰/스킬 승격(메타) | `malgn-studio-mng/docs/agents` | [def](../.claude/agents/growth-keeper.md) | [rec](./agents/growth-keeper.md) |
 
+> **신규 2종(2026-06-18)**: `instructional-designer`(교수설계 정렬 — 핵심 차별화) · `growth-keeper`(에이전트 성장 운영).
+>
 > **퍼블리셔는 두지 않는다.** Nuxt 3 Vue SFC에서는 `template`+`script`가 한 `.vue`에 함께 있어
 > 마크업·디자인 시스템 준수·반응형·접근성은 각 프론트 개발자(frontend/admin/lms-developer)가 직접 책임진다.
 >
