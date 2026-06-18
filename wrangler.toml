@@ -7,7 +7,7 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "malgn-studio-project"
-database_id = "PLACEHOLDER_RUN_WRANGLER_D1_CREATE"
+database_id = "0967505f-33ec-4013-acf2-845602a212f9"
 migrations_dir = "server/db/migrations"
 
 # 이슈 첨부 이미지 저장소 (Cloudflare R2). 업로드/서빙은 /api/uploads 경유(로그인 게이트).
