@@ -89,5 +89,6 @@ updated: 2026-06-18
 
 - 2026-06-18 — [학습] malgn-studio-mng 초기 배포 전 과정 검증(D1·R2·마이그레이션·콘텐츠시드·시크릿·라우트). [개선] 형제 레포 배포 설정은 각 레포 확인 후.
 - 2026-06-18 — [초기 시드] §2~§5 정본화: 검증된 Pages 배포 흐름(빌드→wrangler deploy ASCII 메시지→라우트 실측→정합 커밋→history), D1 바인딩 실제 id 반영, 콘텐츠 D1 시드 필수·시크릿 재배포·인증 게이트 상태코드 함정 기록. [승격 후보] 라우트별 검증 체크리스트가 반복 검증되면 `.claude/agents/deployer.md` 정의에 1~2줄 반영.
+- 2026-06-18 — [학습] **docs 변경 배포는 콘텐츠 D1 재시드 필수**가 2회 연속 확인됨: `pnpm content:seed:gen`(생성문 25→44개 증가) → `wrangler d1 execute --file=dist/content-seed.sql` 후 `_content_docs`에 신규 경로(/agents/*·/planning/quality/*) 39건 반영. 누락 시 체크섬 불일치로 /docs가 덤프(차단됨)를 요청해 빈다. [승격 후보] "docs 변경 시 재시드"를 정의 룰로 승격.
 </content>
 </invoke>
