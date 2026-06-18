@@ -39,12 +39,22 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 409, statusMessage: '이미 사용 중인 아이디입니다' })
   }
 
+  // 부트스트랩: 최초 가입자는 자동 승인(active) + 관리자(admin)로 생성한다.
+  // (관리자가 한 명도 없으면 승인할 주체가 없으므로 첫 계정을 관리자로 시드한다.)
+  const isFirst = (await members.list()).length === 0
+
   const passwordHash = await hashPassword(password)
   const created = await members.create({
     loginId, passwordHash, name, company, role, email, phone,
     agreedAt: new Date().toISOString(),
   })
 
-  // 자동 로그인하지 않는다 — 관리자 승인(status=active) 후 로그인 가능.
-  return { data: { pending: true, name: created.name } }
+  if (isFirst) {
+    await members.setStatus(created.id, 'active')
+    await members.setGrade(created.id, 'admin')
+  }
+
+  // 일반 가입자는 자동 로그인하지 않는다 — 관리자 승인(status=active) 후 로그인 가능.
+  // 최초 가입자(isFirst)는 자동 승인되었으므로 바로 로그인할 수 있다.
+  return { data: { pending: !isFirst, name: created.name } }
 })
