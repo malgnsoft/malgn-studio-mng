@@ -26,16 +26,16 @@ INSERT INTO task (id,stage_id,grp,title,status,owner,note,target_date,completion
 -- WBS 간트(wbs_item) — 분석·기획·설계 단계 (2026-06-17~18 수행분, 모두 완료). wbsData.ts와 일치.
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (1,'시장·경쟁','경쟁 환경 분석 (글로벌·국내 LMS/LXP AI 빌더)','service-planner','2026-06-17','2026-06-17',100,'01-COMPETITION 정본',NULL,0);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (1,'시장·경쟁','포지셔닝·차별화 도출 (4대 해자)','service-planner','2026-06-17','2026-06-17',100,'02-STRATEGY',NULL,1);
-INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','서비스 개요·비전 (00)','planner','2026-06-17','2026-06-17',100,NULL,NULL,2);
-INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','차별화 전략 (02)','planner','2026-06-17','2026-06-17',100,NULL,NULL,3);
-INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','기능 정의·범위 MVP 매트릭스 (03)','planner','2026-06-17','2026-06-17',100,NULL,NULL,4);
+INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','서비스 개요·비전 (00)','service-planner','2026-06-17','2026-06-17',100,NULL,NULL,2);
+INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','차별화 전략 (02)','service-planner','2026-06-17','2026-06-17',100,NULL,NULL,3);
+INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'서비스 기획','기능 정의·범위 MVP 매트릭스 (03)','service-planner','2026-06-17','2026-06-17',100,NULL,NULL,4);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'도메인 기획','인제스트·그라운딩 기획 (04)','planner','2026-06-17','2026-06-17',100,NULL,NULL,5);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'도메인 기획','AI 생성 엔진 기획 (05)','planner','2026-06-17','2026-06-17',100,NULL,NULL,6);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'도메인 기획','미디어 연동 기획 (06)','planner','2026-06-17','2026-06-17',100,NULL,NULL,7);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'도메인 기획','스킬·개인화 기획 (07)','planner','2026-06-17','2026-06-17',100,NULL,NULL,8);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'도메인 기획','발행·LMS 기획 (08)','planner','2026-06-17','2026-06-17',100,NULL,NULL,9);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'로드맵·NFR','로드맵·WBS 9단계 (11)','pms-developer','2026-06-17','2026-06-17',100,NULL,NULL,10);
-INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'로드맵·NFR','비기능 요구 NFR (12)','planner','2026-06-17','2026-06-17',100,NULL,NULL,11);
+INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (2,'로드맵·NFR','비기능 요구 NFR (12)','architect','2026-06-17','2026-06-17',100,NULL,NULL,11);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (3,'시스템 설계','기술 아키텍처·AI 파이프라인 (09)','architect','2026-06-17','2026-06-17',100,NULL,NULL,12);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (3,'시스템 설계','통합 데이터 모델 ERD (09)','dba','2026-06-17','2026-06-17',100,NULL,NULL,13);
 INSERT INTO wbs_item (step,grp,name,owner,"start","end",progress,note,href,sort) VALUES (3,'경험 설계','IA·사용자 플로우·화면 (10)','ux-designer','2026-06-17','2026-06-17',100,NULL,NULL,14);
