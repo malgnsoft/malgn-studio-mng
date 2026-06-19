@@ -47,12 +47,16 @@ function statusOf(t: Item): Status {
   return 'active'
 }
 
-/* ── 타임라인 날짜 ── */
+/* ── 타임라인 날짜 — 프로젝트 기간 고정(2026-06-17 ~ 2026-12-31), 작업이 벗어나면 확장 ── */
+const PROJECT_START = '2026-06-17'
+const PROJECT_END = '2026-12-31'
 const days = computed(() => {
-  const ds = items.value.filter(x => x.start && x.end)
-  if (!ds.length) return [] as { iso: string, day: number, month: number, dow: number, weekend: boolean, sat: boolean, sun: boolean, today: boolean }[]
-  const minIso = ds.reduce((a, x) => (x.start! < a ? x.start! : a), ds[0]!.start!)
-  const maxIso = ds.reduce((a, x) => (x.end! > a ? x.end! : a), ds[0]!.end!)
+  let minIso = PROJECT_START
+  let maxIso = PROJECT_END
+  for (const x of items.value) {
+    if (x.start && x.start < minIso) minIso = x.start
+    if (x.end && x.end > maxIso) maxIso = x.end
+  }
   const out = []
   const cur = toDate(minIso); const last = toDate(maxIso)
   while (cur <= last) {
@@ -247,7 +251,7 @@ async function del(t: Item) {
   catch (e) { alert('삭제 실패: ' + (e instanceof Error ? e.message : '')) }
 }
 
-const subtitle = 'WBS 간트 · 화면 단위 · 기준일'
+const subtitle = `WBS 간트 · 기간 ${PROJECT_START.replace(/-/g, '.')} ~ ${PROJECT_END.replace(/-/g, '.')} · 기준일`
 const todayDot = computed(() => today.value.replace(/-/g, '.'))
 
 const ganttEl = ref<HTMLElement>()
