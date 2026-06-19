@@ -256,15 +256,32 @@ const ganttEl = ref<HTMLElement>()
 // (레이아웃 default.vue가 같은 공유 상태로 GNB를 함께 접음 → 단일 스크롤로 자연스럽게)
 const chromeHidden = useState('wbsChromeHidden', () => false)
 let lastScroll = 0
+let scrollLock = false
+let lockTimer: ReturnType<typeof setTimeout> | null = null
+const CHROME_H = 180 // GNB(56) + topbar 대략 높이
+
+// 크롬을 접/펴면 .gantt 높이가 바뀌며 scrollTop이 보정되고, 그 보정이 다시 onScroll을
+// 발화해 상태를 뒤집는 피드백 루프(상단 떨림)가 생긴다. 토글 직후 트랜지션(.24s) 동안
+// 스크롤 이벤트를 잠가 루프를 끊는다.
+function lockScroll() {
+  scrollLock = true
+  if (lockTimer) clearTimeout(lockTimer)
+  lockTimer = setTimeout(() => { scrollLock = false; lastScroll = ganttEl.value?.scrollTop ?? 0 }, 300)
+}
 function onScroll() {
   const el = ganttEl.value
-  if (!el) return
+  if (!el || scrollLock) return
   const t = el.scrollTop
-  if (t > lastScroll && t > 72) chromeHidden.value = true
-  else if (t < lastScroll - 4) chromeHidden.value = false
+  // 접어도 스크롤 여지가 남을 만큼 내용이 길 때만 접는다(짧은 내용은 접으면 잠겨 진동).
+  const canCollapse = el.scrollHeight - el.clientHeight > CHROME_H
+  if (!chromeHidden.value && t > 80 && t > lastScroll + 6 && canCollapse) {
+    chromeHidden.value = true; lockScroll()
+  } else if (chromeHidden.value && (t < 8 || t < lastScroll - 12)) {
+    chromeHidden.value = false; lockScroll()
+  }
   lastScroll = t
 }
-onBeforeUnmount(() => { chromeHidden.value = false })
+onBeforeUnmount(() => { if (lockTimer) clearTimeout(lockTimer); chromeHidden.value = false })
 
 // 기준일 클릭 → 오늘 컬럼이 타임라인 좌측(진척 시작점)에 오도록 가로 스크롤
 function scrollToToday() {
