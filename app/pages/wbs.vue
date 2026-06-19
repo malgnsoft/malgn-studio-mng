@@ -9,11 +9,14 @@ const today = useState('wbs:today', () => kstToday())
 onMounted(() => { today.value = kstToday() })
 
 /* 담당자 색 */
-const PEOPLE = ['planner', 'service-planner', 'pms-developer', 'architect', 'ux-designer', 'instructional-designer', 'dba', 'growth-keeper', '미정'] as const
+// 담당자 = 전역 에이전트(~/.claude/agents) 지정 이름.
+// 한서기=service-planner · 최기획=planner · 문프매=pms-developer · 도아컨=architect
+// 한데관=dba · 서디자=ux-designer · 윤하람=instructional-designer · 서지원=growth-keeper
+const PEOPLE = ['한서기', '최기획', '문프매', '도아컨', '한데관', '서디자', '윤하람', '서지원', '미정'] as const
 const PCOLOR: Record<string, string> = {
-  planner: '#2563eb', 'service-planner': '#7c3aed', 'pms-developer': '#0d9488',
-  architect: '#d97706', 'ux-designer': '#db2777', 'instructional-designer': '#16a34a',
-  dba: '#0ea5e9', 'growth-keeper': '#9333ea', 미정: '#94a3b8',
+  한서기: '#7c3aed', 최기획: '#2563eb', 문프매: '#0d9488',
+  도아컨: '#d97706', 한데관: '#0ea5e9', 서디자: '#db2777',
+  윤하람: '#16a34a', 서지원: '#9333ea', 미정: '#94a3b8',
 }
 function whoOf(owner: string): string[] {
   if (!owner || owner === '—') return []
