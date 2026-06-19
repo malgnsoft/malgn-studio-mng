@@ -9,10 +9,11 @@ const today = useState('wbs:today', () => kstToday())
 onMounted(() => { today.value = kstToday() })
 
 /* 담당자 색 */
-const PEOPLE = ['김도형', '김경은', '김덕조', '컨설팅팀', '안병훈', '미정'] as const
+const PEOPLE = ['planner', 'service-planner', 'pms-developer', 'architect', 'ux-designer', 'instructional-designer', 'dba', 'growth-keeper', '미정'] as const
 const PCOLOR: Record<string, string> = {
-  김도형: '#2563eb', 김경은: '#7c3aed', 김덕조: '#0d9488',
-  컨설팅팀: '#d97706', 안병훈: '#db2777', 미정: '#94a3b8',
+  planner: '#2563eb', 'service-planner': '#7c3aed', 'pms-developer': '#0d9488',
+  architect: '#d97706', 'ux-designer': '#db2777', 'instructional-designer': '#16a34a',
+  dba: '#0ea5e9', 'growth-keeper': '#9333ea', 미정: '#94a3b8',
 }
 function whoOf(owner: string): string[] {
   if (!owner || owner === '—') return []
@@ -196,15 +197,15 @@ const memoPos = computed(() => {
 })
 
 /* ── 등록/수정/삭제 ── */
-const STEP_OPTIONS = [1, 3, 5]
+const STEP_OPTIONS = [1, 2, 3]
 const modalOpen = ref(false)
 const editingId = ref<number | null>(null)
 const saving = ref(false)
-const form = reactive({ step: 5, group: '', name: '', owner: '', start: '', end: '', progress: 0, note: '', href: '' })
+const form = reactive({ step: 2, group: '', name: '', owner: '', start: '', end: '', progress: 0, note: '', href: '' })
 
 function openCreate() {
   editingId.value = null
-  Object.assign(form, { step: 5, group: '', name: '', owner: '', start: '', end: '', progress: 0, note: '', href: '' })
+  Object.assign(form, { step: 2, group: '', name: '', owner: '', start: '', end: '', progress: 0, note: '', href: '' })
   modalOpen.value = true
 }
 function openEdit(t: Item) {
