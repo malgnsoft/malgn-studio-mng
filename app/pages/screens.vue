@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ScreenItem, ScreenArea } from '~/utils/screenList'
 
-useHead({ title: '화면 진척' })
+useHead({ title: '화면' })
 
 const STAGES = [
   { key: 'design', label: '디자인' },
@@ -71,7 +71,7 @@ function editUrl(it: ScreenItem, field: 'mockupUrl' | 'devUrl') {
 <template>
   <div class="page">
     <header class="head">
-      <h1>화면 진척</h1>
+      <h1>화면</h1>
       <p class="sub">영역별 화면 목록과 <b>디자인 · 퍼블리싱(목업) · 개발 · 테스트</b> 진척. 상태를 클릭해 토글(D1 저장),
         링크 칸의 ✎ 로 목업/개발 URL을 입력합니다. 모달은 해당 화면 아래에 함께 표시됩니다.
         화면 골격은 기획 IA(<code>docs/planning/10-IA-FLOWS</code>)에서 도출한 정본입니다.</p>
