@@ -44,7 +44,7 @@ useHead(() => ({ title: doc.value?.title ?? '문서' }))
 
 <style scoped>
 .page {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px 80px;
 }

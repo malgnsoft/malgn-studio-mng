@@ -211,7 +211,7 @@ function progressFill(p: number) {
 </template>
 
 <style scoped>
-.wk { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+.wk { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
 .wk-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
 .wk-head h1 { font-size: 24px; font-weight: 800; color: var(--ink-900); letter-spacing: -0.02em; }
 .sub { margin-top: 6px; font-size: 13px; color: var(--ink-500); } .sub b { color: var(--ink-800); font-weight: 700; }

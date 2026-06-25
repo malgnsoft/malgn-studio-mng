@@ -127,7 +127,7 @@ function open(id: number) {
 
 <style scoped>
 .page {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 24px 64px;
 }

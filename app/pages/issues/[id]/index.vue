@@ -212,7 +212,7 @@ useHead(() => ({ title: issue.value?.title ?? '이슈' }))
 
 <style scoped>
 .page {
-  max-width: 1080px; /* 이슈 목록·기타 페이지와 동일 폭으로 통일 */
+  max-width: 1200px; /* 이슈 목록·기타 페이지와 동일 폭으로 통일 */
   margin: 0 auto;
   padding: 32px 24px 80px;
 }

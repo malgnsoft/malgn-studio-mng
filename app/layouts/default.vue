@@ -56,8 +56,8 @@ const hideFooter = isFullScreen
 const chromeHidden = useState('wbsChromeHidden', () => false)
 const gnbHidden = computed(() => isFullScreen.value && chromeHidden.value)
 
+// 대시보드는 GNB 메뉴에서 제외 — 로고 클릭(NuxtLink to="/")으로 대시보드 이동.
 const nav = [
-  { to: '/', label: '대시보드', icon: 'i-lucide-layout-dashboard' },
   { to: '/wbs', label: 'WBS', icon: 'i-lucide-gantt-chart' },
   { to: '/weekly', label: '주간 작업', icon: 'i-lucide-calendar-days' },
   { to: '/issues', label: '이슈', icon: 'i-lucide-message-square-warning' },
@@ -105,7 +105,7 @@ async function onLogout() {
   align-items: center;
   gap: 24px;
   height: 100%;
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
