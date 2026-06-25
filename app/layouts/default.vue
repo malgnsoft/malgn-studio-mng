@@ -63,6 +63,7 @@ const nav = [
   { to: '/issues', label: '이슈', icon: 'i-lucide-message-square-warning' },
   { to: '/docs', label: '문서', icon: 'i-lucide-book-text' },
   { to: '/history', label: '작업 이력', icon: 'i-lucide-history' },
+  { to: '/screens', label: '화면', icon: 'i-lucide-layout-list' },
   { to: '/members', label: '참여자', icon: 'i-lucide-users', adminOnly: true }
 ]
 

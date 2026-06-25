@@ -97,3 +97,17 @@ export const issueComment = sqliteTable('issue_comment', {
   authorName: text('author_name').notNull().default(''),
   createdAt: text('created_at').notNull(), // ISO8601
 })
+
+// 화면 진척(/screens) 상태 — 화면ID별 디자인·퍼블리싱·개발·테스트 + 링크.
+// 화면 목록(이름·그룹)은 정본(app/utils/screenList.ts)이 골격이고,
+// 본 테이블은 화면ID 키로 상태/링크만 오버라이드 저장한다(없으면 정본 기본값).
+export const screenStatus = sqliteTable('screen_status', {
+  screenId: text('screen_id').primaryKey(), // 예: S-ST01-0102-001, S-AD01-0201-004-P01
+  design: integer('design', { mode: 'boolean' }).notNull().default(true),
+  publish: integer('publish', { mode: 'boolean' }).notNull().default(false),
+  dev: integer('dev', { mode: 'boolean' }).notNull().default(false),
+  test: integer('test', { mode: 'boolean' }).notNull().default(false),
+  mockupUrl: text('mockup_url').notNull().default(''), // 퍼블리싱 시 목업 링크
+  devUrl: text('dev_url').notNull().default(''), // 개발 완료 시 개발 링크
+  updatedAt: text('updated_at'), // ISO8601
+})
